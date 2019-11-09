@@ -1,0 +1,132 @@
+---
+title: "Lecture 9 in class"
+author: "Jiawei Xu"
+date: "10/30/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+wisc.df <- read.csv("WisconsinCancer.csv") 
+head(wisc.df)
+```
+
+Here we examined samples from `r nrow(wisc.df)` patients
+
+```{r}
+x <- table(wisc.df$diagnosis)
+```
+
+In this data-set we have `r x[1]` cancer and `r x[2]` non-cancer
+
+> Q4. How many variables/features in the data are suffixed with _mean? 
+
+```{r}
+colnames(wisc.df)
+```
+
+
+```{r}
+grep("_mean", colnames(wisc.df), value = TRUE)
+```
+
+to find out how many there
+```{r}
+length(grep("_mean", colnames(wisc.df), value = TRUE))
+```
+```{r}
+wisc.data <- as.matrix(wisc.df[,3:32])
+row.names(wisc.data) <- wisc.df$id
+```
+
+## Principal Component Analysis
+
+```{r}
+colMeans(wisc.data)
+apply(wisc.data,2,sd)
+
+round(apply(wisc.data, 2, sd), 3)
+```
+
+Looks like we need to use `scale = TRUE`here as our data are all over the shop ...
+
+```{r}
+wisc.pr <- prcomp (wisc.data, scale = TRUE)
+summary(wisc.pr)
+```
+
+```{r}
+plot(wisc.pr$x[,1:2], col = wisc.df$diagnosis, xlab = "PC1", ylab = "PC2")
+```
+
+```{r}
+x <- summary(wisc.pr)
+which(x$importance[3,] > 0.7)[1]
+```
+
+```{r}
+data.scaled <- scale(wisc.data)
+data.dist <- dist(data.scaled)
+
+hc <- hclust(data.dist)
+
+plot(hc)
+
+abline(hc, v=4, col="red", lty=2)
+```
+
+```{r}
+wisc.hclust.clusters <- cutree(hc,k=4)
+```
+
+```{r}
+table(wisc.hclust.clusters, wisc.df$diagnosis)
+```
+
+
+## Section 5
+```{r}
+wisc.pr.dist <- dist(wisc.pr$x[,1:7]) 
+wisc.pr.hclust <- hclust(wisc.pr.dist, method = "ward.D2")
+```
+
+
+```{r}
+grps <- cutree(wisc.pr.hclust, k=2)
+table(grps)
+```
+
+
+```{r}
+table(grps, wisc.df$diagnosis)
+```
+
+```{r}
+plot(wisc.pr$x[,1:2], col=grps)
+```
+
+
+```{r}
+plot(wisc.pr$x[,1:2], col=wisc.df$diagnosis)
+```
+
+```{r}
+g <- as.factor(grps)
+levels(g)
+```
+
+```{r}
+g <- relevel(g,2)
+levels(g)
+```
+
+```{r}
+plot(wisc.pr$x[,1:2], col=g)
+```
+
+
+

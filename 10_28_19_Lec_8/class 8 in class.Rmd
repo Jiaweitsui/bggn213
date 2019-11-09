@@ -1,0 +1,139 @@
+---
+title: "Untitled"
+author: "Jiawei Xu"
+date: "10/25/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## K-means example
+
+we'll make up some data for clustering
+
+```{r}
+tmp <- c(rnorm(30,-3), rnorm(30,3))
+x <- cbind(x=tmp, y=rev(tmp))
+
+plot(x)
+```
+
+```{r}
+k <- kmeans(x, centers=3, nstart=20)
+
+k
+```
+
+```{r}
+k$cluster
+
+table(k$cluster)
+
+k$centers
+```
+
+
+```{r}
+plot(x, col=k$cluster)
+points(k$centers, col="blue", pch=15)
+
+```
+
+
+# Hierarchical Clustering in R
+```{r}
+hc <- hclust(dist(x))
+hc
+```
+
+# plot my results
+```{r}
+plot(hc)
+
+abline(h=6, col="red")
+abline(h=4, col="blue")
+```
+
+```{r}
+grps <- cutree(hc, h=4)
+table(grps)
+```
+
+```{r}
+grps <- cutree(hc, k=3)
+```
+
+```{r}
+plot(x, col=grps)
+```
+
+
+```{r}
+# Step 1. Generate some example data for clustering
+x <- rbind(
+matrix(rnorm(100, mean=0, sd = 0.3), ncol = 2), # c1
+matrix(rnorm(100, mean = 1, sd = 0.3), ncol = 2), # c2
+matrix(c(rnorm(50, mean = 1, sd = 0.3), # c3
+rnorm(50, mean = 0, sd = 0.3)), ncol = 2))
+colnames(x) <- c("x", "y")
+```
+
+
+```{r}
+# Step 2. Plot the data without clustering
+plot(x)
+```
+
+
+```{r}
+# Step 3. Generate colors for known clusters
+# (just so we can compare to hclust results)
+col <- as.factor( rep(c("c1","c2","c3"), each=50) )
+plot(x, col=col)
+```
+
+
+```{r}
+hc1 <- hclust(dist(x))
+grps2 <- cutree(hc1, k=3)
+plot(x, col=grps2)
+```
+
+```{r}
+mydata <- read.csv("https://tinyurl.com/expression-CSV",
+row.names=1)
+head(mydata)
+nrow(mydata)
+ncol(mydata)
+```
+
+```{r}
+pca <- prcomp(t(mydata), scale=TRUE)
+
+## See what is returned by the prcomp() function
+attributes(pca)
+# $names
+#[1] "sdev" "rotation" "center" "scale" "x"
+#
+# $class
+#[1] "prcomp"
+
+plot(pca$x[,1], pca$x[,2])
+```
+
+```{r}
+summary(pca)
+```
+
+```{r}
+plot(pca)
+```
+
+```{r}
+plot(pca$x[,1:2], col=c("red", "red", "red", "red", "red", "blue","blue", "blue", "blue", "blue"))
+```
+
+
+
