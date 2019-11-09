@@ -1,0 +1,53 @@
+---
+title: "Class 11: Structural Bioinformatics"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 
+```{r}
+data <- read.csv("Data Export Summary.csv")
+data
+```
+
+`r round((data$Total[1])/sum(data$Total),2)*100`% of structures solved by X-Ray,
+`r round((data$Total[3])/sum(data$Total),2)*100`% of structures solved by Electron Microscopy.
+```{r}
+(data$Total[1])/sum(data$Total)
+(data$Total[3])/sum(data$Total)
+```
+```{r}
+library(bio3d)
+pdb <- read.pdb("1hsg")
+pdb
+```
+
+```{r}
+pdb$atom[1,"resid"]
+```
+
+```{r}
+aa321(pdb$atom[pdb$calpha,"resid"])
+```
+
+```{r}
+prot <- atom.select(pdb, "protein", value=TRUE)
+write.pdb(prot, file = "1hsg_protein.pdb")
+```
+
+```{r}
+lig <- atom.select(pdb, "ligand", value=TRUE)
+write.pdb(lig, file = "1hsg_protein.pdb")
+```
+
+```{r}
+library(bio3d.view)
+view(lig)
+view(pdb,"overview", col="sse")
+```
+
+
+
