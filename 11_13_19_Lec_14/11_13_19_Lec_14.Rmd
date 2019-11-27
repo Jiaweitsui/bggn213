@@ -1,0 +1,164 @@
+---
+title: "Transcriptomics and the analysis of RNA-Seq data"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r eval = FALSE}
+install.packages("Biocmanager")
+BiocManager::install("AnnotationDbi")
+BiocManager::install("org.Hs.eg.db")
+#for this class, I'll also need DESeq2
+
+```
+
+
+```{r}
+counts <- read.csv("airway_scaledcounts.csv", stringsAsFactors = FALSE)
+metadata <-  read.csv("airway_metadata.csv", stringsAsFactors = FALSE)
+```
+
+have a peak at counts
+```{r}
+head(counts)
+#how many genes do we have in this dataset?
+nrow(counts)
+#how many experiments 
+ncol(counts)-1
+```
+
+```{r}
+colnames(counts)[-1] == metadata$id
+all(colnames(counts)[-1] == metadata$id)
+```
+
+```{r}
+control.id <- metadata[metadata$dex == "control",]$id
+treated.id <- metadata[metadata$dex == "treated",]$id
+```
+
+```{r}
+control.mean <- rowSums(counts[,control.id])/length(control.id)
+names(control.mean) <- counts$ensgene
+```
+
+```{r}
+treated.mean <- rowSums(counts[,treated.id])/length(treated.id)
+names(treated.mean) <- counts$ensgene
+```
+
+```{r}
+#combine our meancount data for bookkeeping purposes
+meancounts <- data.frame(control.mean, treated.mean)
+```
+
+```{r}
+plot(meancounts$control.mean, meancounts$treated.mean)
+```
+
+```{r}
+plot.default(meancounts$control.mean, meancounts$treated.mean)
+```
+
+```{r}
+meancounts$log2fc <- log2(meancounts[,"treated.mean"]/meancounts[,"control.mean"])
+head(meancounts)
+```
+
+
+
+```{r}
+x <- data.frame(happy = c(5,6,0,0), sad = c(0,5,0,6))
+x
+x != 0
+which(x != 0)
+which(x != 0, arr.ind = TRUE)
+```
+
+```{r}
+#remove the genes that containing 0
+zero.vals <- which(meancounts[,1:2]==0, arr.ind=TRUE)
+to.rm <- unique(zero.vals[,1])
+mycounts <- meancounts[-to.rm,]
+head(mycounts)
+```
+
+
+```{r}
+# How many genes are left after 0s are removed
+nrow(mycounts)
+```
+
+```{r}
+#A common threshold used for calling something differentially expressed
+up.ind <- mycounts$log2fc > 2
+down.ind <- mycounts$log2fc < (-2)
+```
+
+```{r}
+anno <- read.csv("annotables_grch38.csv")
+head(anno)
+```
+
+
+```{r}
+library("AnnotationDbi")
+library("org.Hs.eg.db")
+```
+
+```{r}
+columns(org.Hs.eg.db)
+```
+
+```{r}
+mycounts$symbol <- mapIds(org.Hs.eg.db,
+                     keys=row.names(mycounts),
+                     column="SYMBOL",
+                     keytype="ENSEMBL",
+                     multiVals="first")
+```
+
+
+```{r}
+head(mycounts)
+```
+
+```{r}
+library(DESeq2)
+citation("DESeq2")
+```
+Set up our 
+```{r}
+dds <- DESeqDataSetFromMatrix(countData=counts, 
+                              colData=metadata, 
+                              design=~dex, 
+                              tidy=TRUE)
+dds
+```
+
+```{r}
+dds <- DESeq(dds)
+```
+
+
+```{r}
+res <- DESeq(dds)
+res
+```
+
+
+```{r}
+resOrdered <- res[order(res$pvalue),]
+res05 <- results(dds, alpha=0.05)
+summary(res05)
+```
+
+```{r}
+mycols <- rep("gray", length(res$padj))
+mycols[abs(res$log2FoldChange)>2]="blue"
+plot(res$log2FoldChange, -log(res$padj), col=mycols)
+```
+
