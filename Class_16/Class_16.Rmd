@@ -1,5 +1,5 @@
 ---
-title: "Metagenomics co-occurrence networks"
+title: "Biological Network Analysis"
 output: github_document
 ---
 
