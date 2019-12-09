@@ -3,8 +3,8 @@ This is my in-class work from BGGN_213 at UC San Diego (F19).
 
 ## Content
 - Class05: [Data exploration and visualization in R](https://github.com/Jiaweitsui/bggn213/blob/master/Class_05/Class_05.md)
-- Lecture06: [Basic R Funtions]
-- Lecture07:
+- Lecture06: [Basic R Funtions](https://github.com/Jiaweitsui/bggn213/blob/master/Class_06/Class_06_R_Function.md)
+- Lecture07: [R Packages from CRAN and BioConductor](https://github.com/Jiaweitsui/bggn213/blob/master/Class_07/class_07.md)
 - Lecture08:
 - Lecture09:
 - Lecture10:
