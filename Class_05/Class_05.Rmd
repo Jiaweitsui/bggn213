@@ -1,5 +1,5 @@
 ---
-title: "R_function"
+title: "R Function"
 output: github_document
 ---
 
@@ -18,7 +18,6 @@ plot(weight$Age, weight$Weight, typ="o", pch=15, cex=1.5, lwd=2,
     main="Babay weight with age")
 ```
 
-
 ```{r}
 #Section 2C Barplot
 mouse <- read.csv(file="bimm143_05_rstats/feature_counts.txt", header=TRUE,
@@ -31,13 +30,13 @@ barplot(mouse$Count, horiz=TRUE, ylab="",
         main="Number of feature in the mouse GRCm38 genome ", las=1)
 ```
 
+
 ```{r}
 #Section 3A
 section_3 <- read.csv(file="bimm143_05_rstats/male_female_counts.txt", header=TRUE,
                       sep="\t")
 barplot(section_3$Count, xlab="", names.arg = section_3$Sample, las=2, ylab="Counts",
         col=rainbow(10))
-
 ```
 
 ```{r}
@@ -45,20 +44,16 @@ barplot(section_3$Count, xlab="", names.arg = section_3$Sample, las=2, ylab="Cou
         col=c("blue2", "red2"))
 ```
 
+
 ```{r}
 #Section 3B
 genes <- read.delim(file="bimm143_05_rstats/up_down_expression.txt", header=TRUE)
 nrow(genes)
-```
 
-```{r}
-table(genes$State)
-```
-
-```{r}
 palette(c("blue","gray","red"))
 plot(genes$Condition1, genes$Condition2, col=genes$State,
      xlab="Expression condition 1", ylab="Expression level 2")
+
 ```
 
 
