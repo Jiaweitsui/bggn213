@@ -1,5 +1,5 @@
 ---
-title: "Designing a personalized cancer vaccine"
+title: "Cancer Genomics "
 output: github_document
 ---
 
@@ -74,16 +74,5 @@ store.seqs[store.seqs == "-"] <- ""
 ## Output a FASTA file for further analysis
 write.fasta(seqs=store.seqs, ids=mutant.names, file="subsequences.fa")
 ```
-
-
-```{r}
-21^9
-```
-
-
-
-
-
-
 
 
