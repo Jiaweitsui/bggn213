@@ -1,2 +1,2 @@
-# bggn213
-This is my work from BGGN213 at UC San Diego
+# Bggn213
+This is my in-class work from BGGN_213 at UC San Diego (F19).
