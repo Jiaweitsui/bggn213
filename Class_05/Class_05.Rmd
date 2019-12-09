@@ -1,5 +1,5 @@
 ---
-title: "R Function"
+title: "Data exploration and visualization in R"
 output: github_document
 ---
 

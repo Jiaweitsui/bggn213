@@ -1,4 +1,4 @@
-R Function
+Data exploration and visualization in R
 ================
 
 ``` r
