@@ -1,5 +1,5 @@
 ---
-title: "Class 11: Structural Bioinformatics"
+title: "Structural Bioinformatics 1"
 output: github_document
 ---
 
@@ -43,11 +43,7 @@ lig <- atom.select(pdb, "ligand", value=TRUE)
 write.pdb(lig, file = "1hsg_protein.pdb")
 ```
 
-```{r}
-library(bio3d.view)
-view(lig)
-view(pdb,"overview", col="sse")
-```
+
 
 
 
