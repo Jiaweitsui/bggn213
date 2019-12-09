@@ -9,9 +9,9 @@ This is my in-class work from BGGN_213 at UC San Diego (F19).
 - Class 9: [Unsupervised Machine Learning](https://github.com/Jiaweitsui/bggn213/blob/master/Class_09/Class_09.md)
 - Class 10: Github Fundamentals
 - Class 11: [Structural Bioinformatics](https://github.com/Jiaweitsui/bggn213/blob/master/Class_11/Class_11.md)
-- Class 12: 
+- Class 12: [Bioinformatics in Drug Discovery and Design]()
 - Class 14: [Transcriptomics and the Analysis of RNA-Seq Data](https://github.com/Jiaweitsui/bggn213/blob/master/Class_14/Class_14.md)
 - Class 15: [Pathway Analysis from RNA-Seq Results](https://github.com/Jiaweitsui/bggn213/blob/master/Class_15/Class_15.md)
 - Class 16: [Biological Network Analysis](https://github.com/Jiaweitsui/bggn213/blob/master/Class_16/Class_16.md)
 - Class 17: UNIX Fundamentals 
-- Class 18: [Cancer Genomics]()
+- Class 18: [Cancer Genomics](https://github.com/Jiaweitsui/bggn213/blob/master/Class_18/Class_18.md)
