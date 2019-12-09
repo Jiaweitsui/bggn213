@@ -24,7 +24,6 @@ head(countData)
 
 ```{r}
 countData <- countData[, -1]
-countData
 ```
 
 ```{r}
@@ -42,7 +41,6 @@ summary(PC)
 
 ```{r}
 mycols <- c(rep("blue", 3), rep("red",3))
-mycols
 plot(PC$x[,1:2], col=mycols)
 ```
 
