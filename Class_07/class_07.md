@@ -1,30 +1,29 @@
----
-title: "R function and packages"
-author: "Jiawei Xu"
-date: "10/23/2019"
-output: github_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+R function and packages
+================
+Jiawei Xu
+10/23/2019
 
 ## 
 
-```{r}
+``` r
 #source online files
 source("http://tinyurl.com/rescale-R")
 ```
 
-```{r}
+``` r
 rescale(1:10)
 ```
 
-```{r}
+    ##  [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667
+    ##  [8] 0.7777778 0.8888889 1.0000000
+
+``` r
 rescale(c(3, 10, NA, 7))
 ```
 
-```{r}
+    ## [1] 0.0000000 1.0000000        NA 0.5714286
+
+``` r
 rescale2 <- function(x, na.rm=TRUE, plot=FALSE, ...) {
 if( !is.numeric(x) ) {
 stop("Input x should be numeric", call.=FALSE)
@@ -38,33 +37,57 @@ return(answer)
 }
 ```
 
-```{r}
+``` r
 rescale2(c(3, 10, NA, 7))
 ```
-```{r}
+
+    ## [1] 0.0000000 1.0000000        NA 0.5714286
+
+``` r
 x <- c(3, 5, NA, 4, NA)
 
 is.na(x)
+```
 
+    ## [1] FALSE FALSE  TRUE FALSE  TRUE
+
+``` r
 which(is.na(x)) # show the order of the NA in the vector
 ```
-```{r}
+
+    ## [1] 3 5
+
+``` r
 both_na <- function(x, y) {
 sum( is.na(x) & is.na(y) )
 }
 ```
 
-```{r}
+``` r
 x <- c(NA, NA, NA)
 y1 <- c( 1, NA, NA)
 y2 <- c( 1, NA, NA, NA)
 nchar(x)
+```
 
+    ## [1] NA NA NA
+
+``` r
 both_na(x, y1)
+```
+
+    ## [1] 2
+
+``` r
 both_na(x, y2) # the last element of y2 vector recyles 
 ```
 
-```{r}
+    ## Warning in is.na(x) & is.na(y): longer object length is not a multiple of
+    ## shorter object length
+
+    ## [1] 3
+
+``` r
 both_na2 <- function(x, y) {
 if (length(x) != length(y)){
   stop("Input x and y should be the same length")
@@ -73,21 +96,27 @@ if (length(x) != length(y)){
 }
 ```
 
-```{r}
+``` r
 # student 1
 a <- c(100, 100, 100, 100, 100, 100, 100, 90)
 # student 2
 b <- c(100, NA, 90, 90, 90, 90, 97, 80)
 ```
 
-```{r}
+``` r
 grade <- function(x){
   mean(x[-which.min(x)], na.rm = TRUE) # -a[b] will exclude b from a
 }
 ```
 
-```{r}
+``` r
 grade(a)
+```
+
+    ## [1] 100
+
+``` r
 grade(b)
 ```
 
+    ## [1] 92.83333
