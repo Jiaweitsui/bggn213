@@ -1,8 +1,8 @@
 ---
-title: "Class 7 R function and packages"
+title: "R function and packages"
 author: "Jiawei Xu"
 date: "10/23/2019"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
