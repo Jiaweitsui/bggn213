@@ -1,8 +1,8 @@
 ---
-title: "Lecture 9 in class"
+title: "Unsupervised Machine Learning"
 author: "Jiawei Xu"
 date: "10/30/2019"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
