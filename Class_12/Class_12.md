@@ -1,4 +1,4 @@
-Untitled
+Bioinformatics in drug discovery and design
 ================
 
 ## Prepare protein structures for Docking
@@ -47,4 +47,31 @@ pdb
 ``` r
 ligand <- atom.select(pdb, "ligand", value = TRUE)
 write.pdb(ligand, file = "1hsg_ligand.pdb")
+
+protein <- atom.select(pdb, "protein", value = TRUE)
+write.pdb(protein, file = "1hsg_protein.pdb")
+```
+
+\#\#Process docking results we need a PDB file to view in VMD
+
+``` r
+res <- read.pdb("all.pdbqt", multi=TRUE) 
+write.pdb(res, "results.pdb")
+```
+
+``` r
+pdb <- read.pdb("1hel")
+```
+
+    ##   Note: Accessing on-line PDB file
+
+``` r
+modes <- nma( pdb )
+```
+
+    ##  Building Hessian...     Done in 0.017 seconds.
+    ##  Diagonalizing Hessian...    Done in 0.084 seconds.
+
+``` r
+m7 <- mktrj(modes, mode=7, file="mode_7.pdb")
 ```

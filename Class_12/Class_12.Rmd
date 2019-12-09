@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Bioinformatics in drug discovery and design"
 output: github_document
 ---
 
