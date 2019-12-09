@@ -1,8 +1,8 @@
 ---
-title: "Untitled"
+title: "Machine Learning 1"
 author: "Jiawei Xu"
 date: "10/25/2019"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -135,5 +135,14 @@ plot(pca)
 plot(pca$x[,1:2], col=c("red", "red", "red", "red", "red", "blue","blue", "blue", "blue", "blue"))
 ```
 
+```{r}
+#inclass lab
+x <- read.csv("UK_foods.csv", row.names=1)
+rownames(x) <- x[,1]
+
+head(x)
+
+barplot(as.matrix(x), beside=T, col=rainbow(nrow(x)))
+```
 
 
