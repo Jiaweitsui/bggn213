@@ -2,8 +2,8 @@
 This is my in-class work from BGGN_213 at UC San Diego (F19).
 
 ## Content
-- Lecture05:
-- Lecture06:
+- Class05: [Data exploration and visualization in R](https://github.com/Jiaweitsui/bggn213/blob/master/Class_05/Class_05.md)
+- Lecture06: [Basic R Funtions]
 - Lecture07:
 - Lecture08:
 - Lecture09:
