@@ -1,4 +1,4 @@
-Class 6 R Function
+Basic R Funtions
 ================
 Jiawei
 10/18/2019
