@@ -13,6 +13,7 @@ This is my in-class work from BGGN_213 at UC San Diego (F19).
 - Class 9: [Unsupervised Machine Learning](https://github.com/Jiaweitsui/bggn213/blob/master/Class_09/Class_09.md)
 
 - Class 10: Github Fundamentals
+
 - Class 11: [Structural Bioinformatics](https://github.com/Jiaweitsui/bggn213/blob/master/Class_11/Class_11.md)
 
 - Class 12: [Bioinformatics in Drug Discovery and Design](https://github.com/Jiaweitsui/bggn213/blob/master/Class_12/Class_12.md)
