@@ -1,5 +1,5 @@
 ---
-title: "Bioinformatics in drug discovery and design"
+title: "Bioinformatics in Drug Discovery and Design"
 output: github_document
 ---
 

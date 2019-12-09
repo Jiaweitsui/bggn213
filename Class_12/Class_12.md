@@ -1,4 +1,4 @@
-Bioinformatics in drug discovery and design
+Bioinformatics in Drug Discovery and Design
 ================
 
 ## Prepare protein structures for Docking
@@ -69,8 +69,8 @@ pdb <- read.pdb("1hel")
 modes <- nma( pdb )
 ```
 
-    ##  Building Hessian...     Done in 0.017 seconds.
-    ##  Diagonalizing Hessian...    Done in 0.084 seconds.
+    ##  Building Hessian...     Done in 0.018 seconds.
+    ##  Diagonalizing Hessian...    Done in 0.1 seconds.
 
 ``` r
 m7 <- mktrj(modes, mode=7, file="mode_7.pdb")
