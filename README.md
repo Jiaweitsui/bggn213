@@ -14,4 +14,4 @@ This is my in-class work from BGGN_213 at UC San Diego (F19).
 - Class 15: [Pathway Analysis from RNA-Seq Results](https://github.com/Jiaweitsui/bggn213/blob/master/Class_15/Class_15.md)
 - Class 16: [Biological Network Analysis](https://github.com/Jiaweitsui/bggn213/blob/master/Class_16/Class_16.md)
 - Class 17: UNIX Fundamentals 
-- Class 18: [Cancer Genomics]()
+- Class 18: [Cancer Genomics](https://github.com/Jiaweitsui/bggn213/blob/master/Class_18/Class_18.md)
