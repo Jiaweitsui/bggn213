@@ -132,7 +132,7 @@ rescale3(1:10, plot=TRUE)
     ## [1] "Hello"
     ## [1] "is it me you are looking for?"
 
-![](Class6-R-Function_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](Class_06_R_Function_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
     ## [1] "I can see it in ..."
 
@@ -172,16 +172,16 @@ s3.b <- s3.chainA$atom$b
 plotb3(s1.b, sse=s1.chainA, typ="l", ylab="Bfactor")
 ```
 
-![](Class6-R-Function_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](Class_06_R_Function_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 ``` r
 plotb3(s2.b, sse=s2.chainA, typ="l", ylab="Bfactor")
 ```
 
-![](Class6-R-Function_files/figure-gfm/unnamed-chunk-13-2.png)<!-- -->
+![](Class_06_R_Function_files/figure-gfm/unnamed-chunk-13-2.png)<!-- -->
 
 ``` r
 plotb3(s3.b, sse=s3.chainA, typ="l", ylab="Bfactor")
 ```
 
-![](Class6-R-Function_files/figure-gfm/unnamed-chunk-13-3.png)<!-- -->
+![](Class_06_R_Function_files/figure-gfm/unnamed-chunk-13-3.png)<!-- -->
